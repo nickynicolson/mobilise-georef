@@ -146,7 +146,7 @@
     <textarea id="source">   
             class: center, middle
             
-            # (Innovative) Methodologies to approach locational data quality issues
+            # (Innovative) methodologies to approach locational data quality issues
 
             ## Nicky Nicolson 
             ### Senior Research Leader, Biodiversity Informatics, Royal Botanic Gardens, Kew
@@ -157,13 +157,13 @@
             
             # Background
             
-            - Outline data mining project using GBIF preserved specimen data to assert new entities:
+            - Data mining project using GBIF preserved specimen data to assert new entities:
                 - Collector
                 - Collecting trip
                 - Collecting "state" run
             
-            - Exploit botanical collectors practice - use recordedBy, eventDate and recordNumber as input 
-            into clustering algorithm to detect collectors
+            - Exploit botanical collectors practice - used Darwin Core terms `recordedBy`, `eventDate` and `recordNumber` as input 
+            into clustering algorithm (`DBSCAN`) to detect collectors
 
             - Iterative process
 
@@ -180,22 +180,6 @@
             .center[
             <img src="images/dm-example-scatter.png" width="800">
             ]
-
-            ???
-
-            - Previous analysis looked at authors (agents responsible for name publication) and publications (containers for scientific work)
-
-            - Aim to enable similar analysis on previous stage - collecting process
-
-            - Dataset bigger, messier, less complete, unstandardised, no editorial control
-
-            - Designed data mining process based on minimal features, DBSCAN clustering, state-transition analysis
-
-            - Detected collector, collecting trip and collecting run state aggregations
-
-            - Reshaped data to investigate trends in participation
-
-            - Compared with baseline            
 
             ---
             background-image: url(images/bidgood-trips-crop.png)
@@ -218,25 +202,55 @@
             # Collecting state aggregations mapped
 
             ---
-            # Applications: duplicate indentification across institutions
+            # Applications: identifying duplicate specimens
 
             *Reading across*
 
-            - Counted number of georeferences that could be mobilised
-            - Identified institutions that could work together (network view of holdings and overlaps)
+            - Multiple specimens from a single collecting event common practice in botany
+            - Duplicate specimens managed in separate institutional repositories, georeferenced separately. 
+            - Duplicates (traditionally) identified using collector, recordnumber and year
+            - Data mining shared collector identity simplifies duplicate resolution
 
+            Given duplicate resolution:
+            - Counted number of georeferences that could be mobilised via duplicate links
+            - Identified institutions that could work together (network view of holdings and overlaps)
+            
+            ---
+            background-image: url(images/hutchison-5738-table.png)
+            ---
+            background-image: url(images/bidgood-trip-dm-crop.png)
+            # "Reading across": from collecting event to generated specimens
+            
+            ---
+            background-image: url(images/bidgood-trip-dm-crop.png)
+            # "Reading along": from collecting event to its neighbours in sequence
+            
             ---
             # Applications: exploiting collecting event sequence
 
             *Reading along*
 
-            - Constrained clustering using locality text and sequential record number
-            - Identify reused localities
+            - Constrained clustering:
+                - Dataset of specimens relating to single collecting trip
+                - Use locality text and sequential record number
+            - Identify reused localities, even if variably recorded
 
             ---
 
             # Conclusions
 
+            - Preserved specimens human generated collections
+            - Contextual information from collector, collecting trip etc relevant to georeferencing 
+            - With large aggregated datasets, may be more efficient to pivot and process contextually
+            
+            ## References
+            
+            - N. Nicolson, A. J. Paton, S. Phillips, and A. Tucker, “Specimens as research objects: reconciliation across distributed repositories to enable metadata propagation” in 2018 IEEE 14th International Conference on e-Science (e-Science), 2018, pp. 125-135. [doi:10.1109/eScience.2018.00028](http://dx.doi.org/10.1109/eScience.2018.00028)
+
+            - N. Nicolson "Automating the construction of higher order data representations from heterogeneous biodiversity datasets" (thesis) 2019 https://bura.brunel.ac.uk/handle/2438/19620
+
+            ## Contact
+            email: [n.nicolson@kew.org](mailto:n.nicolson@kew.org)
     </textarea>
     <!--script src="https://remarkjs.com/downloads/remark-latest.min.js"-->
     <script src="remark-latest.min.js">
