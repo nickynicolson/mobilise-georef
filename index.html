@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+<style type="text/css">
+
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+    body, .footer {
+      font-family: 'Droid Serif';
+    }
+    h1, h2, h3 {
+      font-family: 'Yanone Kaffeesatz';
+      font-weight: 400;
+      margin-bottom: 0;
+    }
+    table {
+    border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+        border: 1px solid darkgray;
+        font-size: 0.75em;
+    }
+    .small-slide-content {
+      font-size: 0.95em;
+    }
+    .remark-slide-content h1 { font-size: 2.75em; text-align:center}
+    .remark-slide-content h2 { font-size: 2em; }
+    .remark-slide-content h3 { font-size: 1.6em; }
+    .footnote {
+      position: absolute;
+      bottom: 3em;
+    }
+    li p { line-height: 1.25em; }
+    .red { color: #fa0000; }
+    .large { font-size: 2em; }
+    a, a > code {
+      color: rgb(249, 38, 114);
+      text-decoration: none;
+    }
+    code {
+      background: #e7e8e2;
+      border-radius: 5px;
+    }
+    .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    .remark-code-line-highlighted     { background-color: #373832; }
+    .pull-left {
+      float: left;
+      width: 47%;
+    }
+    .pull-right {
+      float: right;
+      width: 47%;
+    }
+    .pull-right ~ p {
+      clear: both;
+    }
+    #slideshow .slide .content code {
+      font-size: 0.8em;
+    }
+    #slideshow .slide .content pre code {
+      font-size: 0.9em;
+      padding: 15px;
+    }
+    .inverse {
+      background: #272822;
+      color: #777872;
+      text-shadow: 0 0 20px #333;
+    }
+    .inverse h1, .inverse h2 {
+      color: #f3f3f3;
+      line-height: 0.8em;
+    }
+
+    /* Slide-specific styling */
+    #slide-inverse .footnote {
+      bottom: 12px;
+      left: 20px;
+    }
+    #slide-how .slides {
+      font-size: 0.9em;
+      position: absolute;
+      top:  151px;
+      right: 140px;
+    }
+    #slide-how .slides h3 {
+      margin-top: 0.2em;
+    }
+    #slide-how .slides .first, #slide-how .slides .second {
+      padding: 1px 20px;
+      height: 90px;
+      width: 120px;
+      -moz-box-shadow: 0 0 10px #777;
+      -webkit-box-shadow: 0 0 10px #777;
+      box-shadow: 0 0 10px #777;
+    }
+    #slide-how .slides .first {
+      background: #fff;
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      z-index: 1;
+    }
+    #slide-how .slides .second {
+      position: relative;
+      background: #fff;
+      z-index: 0;
+    }
+
+    /* Two-column layout */
+    .left-column {
+      color: #777;
+      width: 20%;
+      height: 92%;
+      float: left;
+    }
+      .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+      }
+    .right-column {
+      width: 75%;
+      float: right;
+      padding-top: 1em;
+    }
+    .remark-slide-content {
+    background-size: contain;
+  }    
+  .footer {
+    color: black;
+    position: fixed;
+    top: 95%;
+    left: 0;
+    right:40;
+    text-align: right;
+    width: 100%;
+}  
+</style>
+
+  </head>
+  <body>
+
+    <textarea id="source">   
+            class: center, middle
+            
+            # (Innovative) Methodologies to approach locational data quality issues
+
+            ## Nicky Nicolson 
+            ### Senior Research Leader, Biodiversity Informatics, Royal Botanic Gardens, Kew
+            
+            ---
+            
+            layout: false
+            
+            # Background
+            
+            - Outline data mining project using GBIF preserved specimen data to assert new entities:
+                - Collector
+                - Collecting trip
+                - Collecting "state" run
+            
+            - Exploit botanical collectors practice - use recordedBy, eventDate and recordNumber as input 
+            into clustering algorithm to detect collectors
+
+            - Iterative process
+
+                - Once *collectors* established, further cluster their preserved specimens to detect *collecting trips*
+
+                - Once *collecting trip* established, cluster their specimens to detect *collecting state runs* - intense 
+            days of collecting activity, separated by days with lesser activity, (likely travelling) 
+            
+            ???
+
+            ---
+            # Data mining - collectors and trips
+
+            .center[
+            <img src="images/dm-example-scatter.png" width="800">
+            ]
+
+            ???
+
+            - Previous analysis looked at authors (agents responsible for name publication) and publications (containers for scientific work)
+
+            - Aim to enable similar analysis on previous stage - collecting process
+
+            - Dataset bigger, messier, less complete, unstandardised, no editorial control
+
+            - Designed data mining process based on minimal features, DBSCAN clustering, state-transition analysis
+
+            - Detected collector, collecting trip and collecting run state aggregations
+
+            - Reshaped data to investigate trends in participation
+
+            - Compared with baseline            
+
+            ---
+            background-image: url(images/bidgood-trips-crop.png)
+
+            # Single collector: periodic trip activity
+
+
+            ---
+            background-image: url(images/bidgood-trip-detail-crop.png)
+              # Sub-trip activity also periodic
+
+            ---
+            background-image: url(images/bidgood-trip-dm-crop.png)
+
+            # Data mine sub-trip aggregations
+
+            ---
+            background-image: url(images/bidgood-trip-map-crop.png)
+
+            # Collecting state aggregations mapped
+
+            ---
+            # Applications: duplicate indentification across institutions
+
+            *Reading across*
+
+            - Counted number of georeferences that could be mobilised
+            - Identified institutions that could work together (network view of holdings and overlaps)
+
+            ---
+            # Applications: exploiting collecting event sequence
+
+            *Reading along*
+
+            - Constrained clustering using locality text and sequential record number
+            - Identify reused localities
+
+            ---
+
+            # Conclusions
+
+    </textarea>
+    <!--script src="https://remarkjs.com/downloads/remark-latest.min.js"-->
+    <script src="remark-latest.min.js">
+    </script>
+    <script>
+        var slideshow = remark.create({
+            slideNumberFormat: ""
+        });        
+
+        // var slideshow = remark.create({
+        // sourceUrl: 'slides-vanilla.md'
+        // });        
+    </script>
+  </body>
+</html>
